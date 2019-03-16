@@ -19,24 +19,37 @@
         <v-btn color="accent" round outline nuxt to="/confirm/guestOneDetails">Confirma</v-btn>
       </v-layout>
     </v-card>
-    <div v-else class="video-container">
-      <video id="video" allowfullscreen @ended="next">
-        <source src="../static/nunta.mp4" type="video/mp4">
-      </video>
-      <v-btn
-        color="accent"
-        class="btn-play"
-        round
-        outline
-        nuxt
-        v-if="!hideButton"
-        @click="playVideo"
-      >
-        <v-icon>play_arrow</v-icon>
-      </v-btn>
-      <v-btn color="accent" class="btn-video" round outline nuxt @click="next">
-        <v-icon>arrow_forward</v-icon>
-      </v-btn>
+
+    <div v-else class="text-xs-center">
+      <v-progress-circular
+        v-show="loading"
+        indeterminate
+        :size="50"
+        :width="5"
+        class="spinner"
+        color="white"
+      ></v-progress-circular>
+
+      <div v-show="!loading" class="video-container">
+        <video id="video" allowfullscreen @ended="next" @canplay="loading = !loading">
+          <source src="../static/nunta.mp4" type="video/mp4">
+        </video>
+        <v-btn
+          color="accent"
+          class="btn-play"
+          fab
+          round
+          outline
+          nuxt
+          v-if="!hideButton"
+          @click="playVideo"
+        >
+          <v-icon>play_arrow</v-icon>
+        </v-btn>
+        <v-btn color="accent" class="btn-video" round outline nuxt @click="next">
+          <v-icon>arrow_forward</v-icon>
+        </v-btn>
+      </div>
     </div>
   </v-layout>
 </template>
@@ -47,7 +60,8 @@ export default {
   components: {},
   data: () => ({
     hiddenVideo: true,
-    hideButton: false
+    hideButton: false,
+    loading: true
   }),
   methods: {
     next() {
@@ -69,6 +83,15 @@ a {
   letter-spacing: 1px;
   font-weight: 300;
 }
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
 .video-container {
   position: relative;
 }

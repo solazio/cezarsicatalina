@@ -11,7 +11,7 @@
         <a href="https://www.facebook.com/cezar.vladut" class="font-weight-regular">Cezar</a> și cum ne iubim atât de mult ne-am decis să ne petrecem restul vieții împreună. Acum ceva timp universul a fost din nou de partea noastră și am identificat locația perfectă pentru a ne căsători. Ne dorim să ne fii alături la petrecerea noastră care va avea tema Nuntă în grădină. Locația despre care vorbim este
         <a
           href="https://www.google.com/maps/place/Mosia+Corbeanca/@44.6063943,26.0182124,18.75z/data=!4m5!3m4!1s0x40b21a6beaaaaaab:0x9df317e4c9d3a72f!8m2!3d44.6063836!4d26.0189029?shorturl=1"
-        >Moșia Corbeanca</a>. Pentru că ne dorim să nu facem și mai mult rău mediului, meniul va fi bufet suedez și nici nu printăm invitații. Cununia civilă și cea religioasă vor acea loc în aceeași zi și în același loc începând de la ora 17.00. Mai jos aveți un chestionar care ne va ajuta pe noi să organizăm una din cele mai tari petreceri la care ai participat, așa că te rugăm să fii cât mai exact.
+        >Moșia Corbeanca</a>. Deoarece în lume există o mare risipă de mâncare, meniul va fi bufet suedez și o să avem grijă în cazul în care v-a plăcut să plecați acasă cu pachețel. Cununia civilă și cea religioasă vor acea loc în aceeași zi de 24 august 2019 și în același loc cu nunta începând de la ora 17.00. Dacă ne confirmați v-a trebui să completați un chestionar care ne va ajuta pe noi să organizăm probabil cea mai frumoasă petrecere la care ați participat, așa că vă rugăm să fiți cât mai exact.
       </v-card-text>
       <v-layout row pt-3 pb-2>
         <v-btn color="accent" round outline nuxt @click="next">Vezi video</v-btn>

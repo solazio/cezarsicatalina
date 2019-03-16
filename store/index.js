@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { getField, updateField } from 'vuex-map-fields'
+import VuexReset from '@ianwalter/vuex-reset'
 
 Vue.use(Vuex)
 
 const store = () =>
   new Vuex.Store({
+    plugins: [VuexReset()],
     strict: true,
     state: {
       guestOneDetails: {
@@ -15,7 +17,7 @@ const store = () =>
         selectWine: null,
         selectLiquor: null,
         selectDiet: null,
-        selectAllergy: null,
+        selectAllergy: [],
         cocktail: '',
         song: '',
         selectInsotit: null
@@ -27,7 +29,7 @@ const store = () =>
         selectWine: null,
         selectLiquor: null,
         selectDiet: null,
-        selectAllergy: null,
+        selectAllergy: [],
         cocktail: '',
         song: ''
       },
@@ -54,6 +56,7 @@ const store = () =>
       getField
     },
     mutations: {
+      reset: () => {},
       updateField
     }
   })

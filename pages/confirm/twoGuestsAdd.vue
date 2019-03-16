@@ -50,6 +50,9 @@
 
 <script>
 import { mapFields } from 'vuex-map-fields'
+import Axios from 'axios'
+
+const API_URL = 'https://cezarsicatalina-server.herokuapp.com'
 
 export default {
   data: () => ({
@@ -78,26 +81,43 @@ export default {
       })
     },
     sendDataToGoogleSheets() {
-      this.$toast.success('Ai fost inregistrat cu succes!', {
-        theme: 'bubble',
-        duration: 4000,
-        containerClass: 'toast-custom',
-        icon: {
-          name: 'check_circle',
-          after: false
-        }
-      })
-      // const dataToSend = ''
-      // const self = this
-      // Axios.post(`${API_URL}/newguest`, dataToSend)
-      //   .then(function(response) {
-      //     self.$toast.success(response.data.message)
-      //     self.disabledButton = false
-      //   })
-      //   .catch(function(error) {
-      //     self.$toast.error(error.response.data.error)
-      //     self.disabledButton = false
-      //   })
+      this.disabledButton = true
+      const self = this
+      const dataToSend = {
+        guestOneDetails: self.$store.state.guestOneDetails,
+        guestTwoDetails: self.$store.state.guestTwoDetails,
+        additionalInfo: self.$store.state.additionalInfo
+      }
+
+      Axios.post(`${API_URL}/newguest`, dataToSend)
+        // Axios.post(`http://localhost:5000/newguest`, dataToSend)
+        .then(function(response) {
+          self.$toast.success(response.data.message, {
+            theme: 'bubble',
+            duration: 4000,
+            containerClass: 'toast-custom',
+            icon: {
+              name: 'check_circle',
+              after: false
+            }
+          })
+          self.disabledButton = false
+          self.$store.commit('reset')
+          self.$router.push('/confirm/guestOneDetails')
+        })
+        .catch(function(error) {
+          self.$toast.error(error.response.data.error, {
+            theme: 'bubble',
+            duration: 4000,
+            containerClass: 'toast-custom',
+            icon: {
+              name: 'error',
+              after: false
+            }
+          })
+          self.disabledButton = false
+          self.$router.push('/confirm/guestOneDetails')
+        })
     }
   }
 }
